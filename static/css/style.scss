@@ -1,0 +1,21 @@
+@import "compass";
+$font-stack: "Lucida Grande", Helvetica, sans-serif, arial;
+
+body {
+  padding: 50px;
+  font: 24px $font-stack; 
+}
+
+a {
+  color: #00B7FF
+}
+
+body>div {
+  text-align: center;
+  font: 48px $font-stack;
+}
+
+.h-gradient {
+  @include background-image(linear-gradient(to right, white, #999999));
+}
+
