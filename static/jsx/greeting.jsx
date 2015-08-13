@@ -1,12 +1,5 @@
-var GreetingBox = React.createClass({
-    render: function () {
-        return (
-            <div className="greetingBox">
-              Hello, world!
-            </div>
-        );
-    }
-});
+'use strict';
+var React = require('react');
 
 var FeedbackBox = React.createClass({
     render: function () {
@@ -22,7 +15,12 @@ var BackgroundPics = React.createClass({
     }
 });
 
-React.render(
-    <GreetingBox />,
-    document.getElementById('initial-react')
-);
+module.exports = React.createClass({
+    render: function () {
+        return (
+            <div className="greetingBox">
+              Hello, world!
+            </div>
+        );
+    }
+});

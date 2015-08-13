@@ -4,11 +4,15 @@ var sass = require('gulp-ruby-sass');
 var sourcemaps = require('gulp-sourcemaps'); 
 var babel = require('gulp-babel');
 var gutil = require('gulp-util');
+var webpack = require('webpack-stream');
+var webpackConfig = require('./webpack.config.js');
 
 var paths = { sass: 'static/css/',
               public_css: 'public/css',
               jsx: 'static/jsx/**/*.jsx',
-              public_js: 'public/js/' 
+              js: 'static/js/**/*.js',
+              public_js: 'public/js/',
+              bower: 'bower_components/'
             };
 
 gulp.task('default', function() {
@@ -30,6 +34,17 @@ gulp.task('jsx', function() {
             this.emit('end');
         })
         .pipe(gulp.dest(paths.public_js));
+});
+
+gulp.task('bower', function() {
+    return gulp.src()
+        .pipe(gulp.dest('test'));
+});
+
+gulp.task('webpack', function() {
+    return gulp.src([paths.jsx, paths.js])
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest('public/js'));
 });
 
 gulp.task('watch', function() {
