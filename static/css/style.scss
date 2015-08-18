@@ -1,4 +1,7 @@
 @import "compass";
+@import "bootstrap";
+@import "bootstrap/theme";
+
 $font-stack: "Lucida Grande", Helvetica, sans-serif, arial;
 
 body {
@@ -19,3 +22,6 @@ body>div {
   @include background-image(linear-gradient(to right, white, #999999));
 }
 
+.content-main {
+  @include make-lg-column(8);
+}

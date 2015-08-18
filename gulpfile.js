@@ -6,21 +6,35 @@ var babel = require('gulp-babel');
 var gutil = require('gulp-util');
 var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
+var rename = require('gulp-rename');
+var path = require('path');
 
 var paths = { sass: 'static/css/',
               public_css: 'public/css',
               jsx: 'static/jsx/**/*.jsx',
               js: 'static/js/**/*.js',
               public_js: 'public/js/',
-              bower: 'bower_components/'
+              bower: 'bower_components/',
+              all: 'static/**/*.*',
+              bundle: 'public/',
+              node_modules: __dirname + '/node_modules/'
             };
+
+var libs = {
+    bs: 'bootstrap-sass/assets'
+}
 
 gulp.task('default', function() {
     
 });
 
 gulp.task('sass', function() {
-    return sass(paths.sass, {compass: true })
+    return sass(paths.sass, {compass: true,
+                             loadPath: [
+                                 path.join(paths.node_modules, libs.bs,
+                                           'stylesheets')
+                             ]
+                            })
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.public_css));
 });
@@ -36,18 +50,18 @@ gulp.task('jsx', function() {
         .pipe(gulp.dest(paths.public_js));
 });
 
-gulp.task('bower', function() {
-    return gulp.src()
-        .pipe(gulp.dest('test'));
+gulp.task('bootstrap', function() {
+
 });
 
 gulp.task('webpack', function() {
-    return gulp.src([paths.jsx, paths.js])
+    return gulp.src('./static/entry.js')
         .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest(paths.bundle));
 });
 
 gulp.task('watch', function() {
     gulp.watch(paths.sass + '**/*.scss', ['sass']); 
-    gulp.watch(paths.jsx, ['jsx']);
+    //gulp.watch(paths.jsx, ['jsx']);
+    gulp.watch(paths.all, ['webpack']);
 });
