@@ -1,26 +1,26 @@
 'use strict';
-var React = require('react');
+import React from 'react';
 
-var FeedbackBox = React.createClass({
-    render: function () {
+class FeedbackBox extends React.createClass{
+    render() {
         return (
             <div className="feedbackBox"></div>
         ); 
-    } 
-});
+    }
+};
 
-var BackgroundPics = React.createClass({
-    render: function () {
+class BackgroundPics extends React.Component {
+    render() {
         return ( <div className="backgroundPics"></div>);
     }
-});
+};
 
-module.exports = React.createClass({
-    render: function () {
+export default class GreetingBox extends React.Component {
+    render() {
         return (
             <div className="greetingBox">
               Hello, world!
             </div>
         );
     }
-});
+};

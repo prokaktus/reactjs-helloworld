@@ -1,9 +1,14 @@
 'use strict';
 
-var React = require('react');
-var GreetingBox = require('./jsx/greeting.jsx');
+import React from 'react';
+import GreetingBox from './jsx/greeting.jsx';
+import $ from 'jquery';
 
-React.render(
-    <GreetingBox />,
-    document.getElementById('initial-react')
-);
+main();
+
+function main() {
+    React.render(
+        <GreetingBox />,
+        document.getElementById('initial-react')
+    );
+}
