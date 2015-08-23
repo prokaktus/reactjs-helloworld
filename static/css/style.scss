@@ -3,9 +3,14 @@
 
 $font-stack: "Lucida Grande", Helvetica, sans-serif, arial;
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  padding: 50px;
-  font: 24px $font-stack; 
+  font: 24px $font-stack;
+  margin-bottom: 30px;
 }
 
 a {
@@ -22,5 +27,23 @@ body>div {
 }
 
 .content-main {
-  @include make-lg-column(8);
+  @include make-lg-column(12);
+}
+
+body .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #aaaaaa;
+  font-size: 18px;
+  padding: 5px;
+  text-align: right;
+}
+
+.footer p {
+}
+
+.container {
+  width: auto;
 }

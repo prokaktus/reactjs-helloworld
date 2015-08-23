@@ -11,7 +11,7 @@ var path = require('path');
 
 var paths = { sass: 'static/css/',
               public_css: 'public/css',
-              jsx: 'static/jsx/**/*.jsx',
+              jsx: 'static/**/*.jsx',
               js: 'static/js/**/*.js',
               public_js: 'public/js/',
               bower: 'bower_components/',
@@ -64,5 +64,5 @@ gulp.task('webpack', function() {
 gulp.task('watch', function() {
     gulp.watch(paths.sass + '**/*.scss', ['sass']); 
     gulp.watch(paths.jsx, ['jsx']);
-    gulp.watch(paths.all, ['webpack']);
+    gulp.watch(paths.jsx, ['webpack']);
 });
