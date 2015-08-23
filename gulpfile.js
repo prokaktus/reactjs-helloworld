@@ -21,8 +21,8 @@ var paths = { sass: 'static/css/',
             };
 
 var libs = {
-    bs: 'bootstrap-sass/assets'
-}
+    bs: path.join(paths.node_modules, 'bootstrap-sass/assets')
+};
 
 gulp.task('default', function() {
     
@@ -31,8 +31,9 @@ gulp.task('default', function() {
 gulp.task('sass', function() {
     return sass(paths.sass, {compass: true,
                              loadPath: [
-                                 path.join(paths.node_modules, libs.bs,
-                                           'stylesheets')
+                                 path.join(libs.bs,
+                                           'stylesheets'),
+                                 libs.bs
                              ]
                             })
         .pipe(sourcemaps.write())
@@ -62,6 +63,6 @@ gulp.task('webpack', function() {
 
 gulp.task('watch', function() {
     gulp.watch(paths.sass + '**/*.scss', ['sass']); 
-    //gulp.watch(paths.jsx, ['jsx']);
+    gulp.watch(paths.jsx, ['jsx']);
     gulp.watch(paths.all, ['webpack']);
 });

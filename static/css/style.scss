@@ -1,4 +1,3 @@
-@import "compass";
 @import "bootstrap";
 @import "bootstrap/theme";
 
@@ -19,7 +18,7 @@ body>div {
 }
 
 .h-gradient {
-  @include background-image(linear-gradient(to right, white, #999999));
+  
 }
 
 .content-main {
